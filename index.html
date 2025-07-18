@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Year</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Title Screen -->
+    <div id="title-screen" class="screen active">
+        <div class="title-container">
+            <h1 class="game-title">The Final Year</h1>
+            <p class="intro-text">
+                The end has been quietly looming. Systems are failing, resources dwindling, 
+                and everyone knows what's coming. This is your final year—how will you spend it? 
+                What legacy will you leave? What connections will you cherish?
+            </p>
+            <button id="start-btn" class="primary-btn">Begin Your Final Year</button>
+        </div>
+    </div>
+
+    <!-- Character Selection Screen -->
+    <div id="character-screen" class="screen">
+        <div class="character-container">
+            <h2>Choose Your Path</h2>
+            <p class="selection-text">Who are you in these final days?</p>
+            
+            <div class="character-grid">
+                <div class="character-card" data-character="parent">
+                    <h3>The Parent</h3>
+                    <p>Your children are your world. Every choice weighs their future against the present.</p>
+                    <div class="starting-stats">
+                        <span>Hope: 70</span>
+                        <span>Relationships: 85</span>
+                        <span>Supplies: 60</span>
+                    </div>
+                </div>
+
+                <div class="character-card" data-character="scientist">
+                    <h3>The Scientist</h3>
+                    <p>You understand the collapse better than most. Knowledge is both burden and power.</p>
+                    <div class="starting-stats">
+                        <span>Hope: 50</span>
+                        <span>Relationships: 60</span>
+                        <span>Supplies: 75</span>
+                    </div>
+                </div>
+
+                <div class="character-card" data-character="artist">
+                    <h3>The Artist</h3>
+                    <p>Beauty matters, even at the end. Your art captures what words cannot.</p>
+                    <div class="starting-stats">
+                        <span>Hope: 80</span>
+                        <span>Relationships: 70</span>
+                        <span>Supplies: 45</span>
+                    </div>
+                </div>
+
+                <div class="character-card" data-character="caregiver">
+                    <h3>The Caregiver</h3>
+                    <p>Others' needs come first. Your strength comes from helping those who cannot help themselves.</p>
+                    <div class="starting-stats">
+                        <span>Hope: 75</span>
+                        <span>Relationships: 90</span>
+                        <span>Supplies: 50</span>
+                    </div>
+                </div>
+
+                <div class="character-card" data-character="resistor">
+                    <h3>The Resistor</h3>
+                    <p>You refuse to go quietly. If the world ends, it won't be without a fight.</p>
+                    <div class="starting-stats">
+                        <span>Hope: 60</span>
+                        <span>Relationships: 65</span>
+                        <span>Supplies: 80</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- Header with title -->
+            <header class="game-header">
+                <h1>The Final Year</h1>
+            </header>
+
+            <!-- Resources Bar -->
+            <div class="resources-bar">
+                <div class="resource">
+                    <label>Hope</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill hope-fill" id="hope-bar"></div>
+                    </div>
+                    <span class="resource-value" id="hope-value">70/100</span>
+                </div>
+
+                <div class="resource">
+                    <label>Relationships</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill relationships-fill" id="relationships-bar"></div>
+                    </div>
+                    <span class="resource-value" id="relationships-value">70/100</span>
+                </div>
+
+                <div class="resource">
+                    <label>Supplies</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill supplies-fill" id="supplies-bar"></div>
+                    </div>
+                    <span class="resource-value" id="supplies-value">70/100</span>
+                </div>
+
+                <div class="time-remaining">
+                    <label>Time Remaining</label>
+                    <span class="time-value" id="time-value">Week 1 of 52</span>
+                </div>
+            </div>
+
+            <!-- Event Display -->
+            <div class="event-container">
+                <div class="event-text" id="event-text">
+                    <!-- Event description will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Choice Buttons -->
+            <div class="choices-container" id="choices-container">
+                <!-- Choice buttons will be inserted here -->
+            </div>
+
+            <!-- Continue Button (for events without choices) -->
+            <div class="continue-container" id="continue-container" style="display: none;">
+                <button id="continue-btn" class="primary-btn">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ending Screen -->
+    <div id="ending-screen" class="screen">
+        <div class="ending-container">
+            <h2>Your Final Year</h2>
+            <div class="ending-text" id="ending-text">
+                <!-- Ending narrative will be inserted here -->
+            </div>
+            <div class="final-stats" id="final-stats">
+                <!-- Final resource values will be shown here -->
+            </div>
+            <button id="restart-btn" class="primary-btn">Begin Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

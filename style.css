@@ -1,0 +1,443 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    color: #ecf0f1;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title Screen */
+.title-container {
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.game-title {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #bdc3c7;
+    line-height: 1.8;
+}
+
+/* Character Selection */
+.character-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.character-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e74c3c;
+}
+
+.selection-text {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #bdc3c7;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.character-card {
+    background: rgba(52, 73, 94, 0.9);
+    border-radius: 12px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    border-color: #e74c3c;
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+}
+
+.character-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #e74c3c;
+}
+
+.character-card p {
+    margin-bottom: 20px;
+    color: #bdc3c7;
+    font-size: 1rem;
+}
+
+.starting-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #95a5a6;
+}
+
+/* Main Game Screen */
+#game-screen {
+    display: none;
+    padding: 0;
+}
+
+#game-screen.active {
+    display: block;
+}
+
+.game-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Resources Bar */
+.resources-bar {
+    background: rgba(52, 73, 94, 0.9);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.resource {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resource label {
+    font-weight: bold;
+    color: #ecf0f1;
+    font-size: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(44, 62, 80, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.hope-fill {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+}
+
+.relationships-fill {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.supplies-fill {
+    background: linear-gradient(90deg, #27ae60, #229954);
+}
+
+.resource-value {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    text-align: center;
+}
+
+.time-remaining {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(189, 195, 199, 0.3);
+}
+
+.time-remaining label {
+    display: block;
+    font-weight: bold;
+    color: #ecf0f1;
+    margin-bottom: 5px;
+}
+
+.time-value {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Event Container */
+.event-container {
+    background: rgba(52, 73, 94, 0.9);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    flex-grow: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.event-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #ecf0f1;
+    text-align: left;
+}
+
+/* Choices Container */
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.choice-btn {
+    background: rgba(52, 73, 94, 0.9);
+    border: 2px solid #7f8c8d;
+    color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.choice-btn:hover {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.2);
+    transform: translateX(5px);
+}
+
+.choice-btn:active {
+    transform: translateX(5px) scale(0.98);
+}
+
+/* Primary Button */
+.primary-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.primary-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* Continue Container */
+.continue-container {
+    text-align: center;
+}
+
+/* Ending Screen */
+.ending-container {
+    max-width: 700px;
+    text-align: center;
+    background: rgba(52, 73, 94, 0.9);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ending-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #e74c3c;
+}
+
+.ending-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #ecf0f1;
+}
+
+.final-stats {
+    background: rgba(44, 62, 80, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.final-stat {
+    text-align: center;
+}
+
+.final-stat label {
+    display: block;
+    font-weight: bold;
+    color: #bdc3c7;
+    margin-bottom: 5px;
+}
+
+.final-stat value {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+    }
+    
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-bar {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .event-text {
+        font-size: 1.1rem;
+    }
+    
+    .choice-btn {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    
+    .game-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-container {
+        padding: 20px;
+    }
+    
+    .game-title {
+        font-size: 2rem;
+    }
+    
+    .resources-bar {
+        padding: 15px;
+    }
+    
+    .event-container {
+        padding: 20px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen.active {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Typewriter effect for event text */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #e74c3c;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #e74c3c;
+    }
+}
+
