@@ -222,7 +222,7 @@ class GameState {
         
         // Show continue button after a brief delay
         setTimeout(() => {
-            this.showContinueButton();
+            this.showContinueButton(choice.text, resourceChanges);
         }, 1000);
     }
 
@@ -247,8 +247,24 @@ class GameState {
     }
 
     // Show continue button
-    showContinueButton() {
+    showContinueButton(choiceText, resourceChanges) {
         const choicesContainer = document.getElementById('choices-container');
+        const actionResultContainer = document.getElementById('action-result');
+
+        let resultHTML = `<p>You chose: "<em>${choiceText}</em>"</p>`;
+
+        const changes = Object.entries(resourceChanges);
+        if (changes.length > 0) {
+            resultHTML += '<p>Effects: ';
+            resultHTML += changes.map(([resource, change]) => {
+                const sign = change.change > 0 ? '+' : '';
+                return `<strong>${resource}:</strong> ${sign}${change.change}`;
+            }).join(', ');
+            resultHTML += '</p>';
+        }
+
+        actionResultContainer.innerHTML = resultHTML;
+        actionResultContainer.style.display = 'block';
         choicesContainer.innerHTML = '<button onclick="game.nextEvent()" class="choice-btn continue-btn">Continue</button>';
     }
 
@@ -264,6 +280,7 @@ class GameState {
             this.generateEvents();
             this.showCurrentEvent();
         }
+        document.getElementById('action-result').style.display = 'none';
     }
 
     // Display current event
