@@ -220,6 +220,13 @@ class GameState {
         // Update display immediately
         this.updateDisplay();
         
+        const choiceButtons = document.querySelectorAll('.choice-btn');
+        choiceButtons.forEach((button, index) => {
+            if (index !== choiceIndex) {
+                button.classList.add('fade-out');
+            }
+        });
+
         // Show continue button after a brief delay
         setTimeout(() => {
             this.showContinueButton();
@@ -264,6 +271,7 @@ class GameState {
             this.generateEvents();
             this.showCurrentEvent();
         }
+        document.getElementById('action-result').style.display = 'none';
     }
 
     // Display current event
