@@ -5,6 +5,10 @@
 }
 
 /* Animation for floating resource numbers */
+.resource {
+    position: relative;
+}
+
 .resource-feedback {
     position: absolute;
     bottom: 20px;

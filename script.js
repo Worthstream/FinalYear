@@ -227,10 +227,10 @@ class GameState {
             }
         });
 
-        // Show continue button after a brief delay
+        // Go to next event after a brief delay
         setTimeout(() => {
-            this.showContinueButton(choice.text, resourceChanges);
-        }, 1000);
+            this.nextEvent();
+        }, 2000);
     }
 
     // Show floating resource change feedback
@@ -251,28 +251,6 @@ class GameState {
                 feedback.parentNode.removeChild(feedback);
             }
         }, 2000);
-    }
-
-    // Show continue button
-    showContinueButton(choiceText, resourceChanges) {
-        const choicesContainer = document.getElementById('choices-container');
-        const actionResultContainer = document.getElementById('action-result');
-
-        let resultHTML = `<p>You chose: "<em>${choiceText}</em>"</p>`;
-
-        const changes = Object.entries(resourceChanges);
-        if (changes.length > 0) {
-            resultHTML += '<p>Effects: ';
-            resultHTML += changes.map(([resource, change]) => {
-                const sign = change.change > 0 ? '+' : '';
-                return `<strong>${resource}:</strong> ${sign}${change.change}`;
-            }).join(', ');
-            resultHTML += '</p>';
-        }
-
-        actionResultContainer.innerHTML = resultHTML;
-        actionResultContainer.style.display = 'block';
-        choicesContainer.innerHTML = '<button onclick="game.nextEvent()" class="choice-btn continue-btn">Continue</button>';
     }
 
     // Advance to next event
