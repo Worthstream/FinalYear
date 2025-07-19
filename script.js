@@ -227,10 +227,10 @@ class GameState {
             }
         });
 
-        // Show continue button after a brief delay
+        // Go to next event after a brief delay
         setTimeout(() => {
-            this.showContinueButton();
-        }, 1000);
+            this.nextEvent();
+        }, 2000);
     }
 
     // Show floating resource change feedback
@@ -251,12 +251,6 @@ class GameState {
                 feedback.parentNode.removeChild(feedback);
             }
         }, 2000);
-    }
-
-    // Show continue button
-    showContinueButton() {
-        const choicesContainer = document.getElementById('choices-container');
-        choicesContainer.innerHTML = '<button onclick="game.nextEvent()" class="choice-btn continue-btn">Continue</button>';
     }
 
     // Advance to next event
